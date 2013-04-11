@@ -10,7 +10,7 @@ typedef struct node
 typedef struct huffman_tree
 {
     bool isEnd;   // knows if it has a char associated
-    char ch;        // the char associated in case
+    unsigned char ch;        // the char associated in case
     int sum;        // sum used for insertion in the huffman tree
     struct huffman_tree* Tleft;
     struct huffman_tree* Tright;

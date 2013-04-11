@@ -12,7 +12,7 @@
 
 using namespace std;
 
-map<char,string> Table; // keeps the entire hash table that associate char to strings
+map<unsigned char,string> Table; // keeps the entire hash table that associate char to strings
 //map<string,char> ReverseHash; // the reverse hash table for the decoder
 
 bool comp_sort(Tnode a, Tnode b)
@@ -72,7 +72,7 @@ void encode(char* infileName, char* outfileName)
     {
         Tree* T = new Tree;           // create a tree
         T->isEnd = true;
-        T->ch = (char) table[i].ch;
+        T->ch = (unsigned char) table[i].ch;
         T->sum = table[i].freq;
         T->Tleft = NULL;
         T->Tright = NULL;
@@ -130,7 +130,7 @@ void message1()
 int createTable(FILE* infile, Tnode table[])
 {
     int ascii[257];   // keeps the counting for the number of entries for each char
-    char ch;
+    unsigned char ch;
     memset(&ascii,'\0',257*sizeof(int));
 
 
@@ -188,7 +188,7 @@ int binaryToBase10(char str[])
 
 void createOutput(FILE* infile, char* outfileName)
 {
-    char ch;           // the converted char
+    unsigned char ch,ch2;           // the converted char
     ofstream outfile;
     outfile.open ("sandbox1.txt");  // open an auxiliary file
 
@@ -212,8 +212,8 @@ void createOutput(FILE* infile, char* outfileName)
         if(counter == 8)
         {
             int binary = binaryToBase10(str);  // create the decimal
-            ch = (char) binary;                 // convert the decimal to ascii
-            outfile<< ch;
+            ch2 = (unsigned char) binary;                 // convert the decimal to ascii
+            outfile<< ch2;
             counter = 0;
 
         }

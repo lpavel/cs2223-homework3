@@ -20,7 +20,7 @@ int main(){/*int argc, char* argv[])
              message1();
 */
 
-    encode("before.txt","after.txt");
+    encode("Homework6.txt","after.txt");
 
     decode("after.txt","Homework6_final.txt");
 
