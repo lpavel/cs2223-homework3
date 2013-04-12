@@ -41,11 +41,9 @@ void createString(FILE* inFile, ofstream &outFile)
 {
     unsigned char ch; // the char that stores the ascii
     int c;
-    //while( (c = getchar(inFile))!=EOF )
     do
     {
         c = getc(inFile);
-        //fscanf(inFile,"%hhu",&ch);
         ch = (unsigned char) c;
 
         int ascii = (int) ch; // ascii has the number of the character
@@ -63,10 +61,6 @@ void createString(FILE* inFile, ofstream &outFile)
 
 void decode(char* infileName, char* outfileName)
 {
-/*
-    ifstream inFile;
-    inFile.open(infileName);
-*/
     FILE* inFile;
     inFile = fopen(infileName,"r");
     ofstream outFile;
@@ -99,8 +93,6 @@ void decode(char* infileName, char* outfileName)
         }
     }
 
-   // cout<<str.size();
-
     inFile2.close();
     outFile.close();
 
@@ -129,7 +121,6 @@ void makeHash()
         {
             strcpy(c,str); // create the char
             ch = c[0];
-       //     cout<< ch<<'\n';
             isfirst = false;
 
         }
@@ -139,7 +130,6 @@ void makeHash()
             isfirst = true;
 
             ReverseHash[foo] = ch;
-     //       cout<< foo<< " - "<<ReverseHash[foo]<<" \n";
         }
     }
 

@@ -13,7 +13,7 @@
 using namespace std;
 
 map<unsigned char,string> Table; // keeps the entire hash table that associate char to strings
-//map<string,char> ReverseHash; // the reverse hash table for the decoder
+
 
 bool comp_sort(Tnode a, Tnode b)
 {
@@ -57,16 +57,10 @@ void encode(char* infileName, char* outfileName)
     FILE *inFile;
     inFile = fopen(infileName,"r");
     ofstream huffman_codes("reverseHash.txt");
-  //  FILE *outFile;
-   // outFile = fopen(outfileName,"w");
 
     Tnode table[257];
     memset(&table,'\0',257*sizeof(Tnode));        //make the structs null
     int num_chars = createTable(inFile, table);     // the number of characters
-
-    //sort(table, table+num_chars, comp_sort);
-
-    //create the huffman tree
 
     for(int i=0; i<num_chars; i++)    //initialize the priority queue
     {
@@ -155,23 +149,6 @@ int createTable(FILE* infile, Tnode table[])
 
 }
 
-/*
-void createOutput(FILE* infile, char* outfileName) // works without compressing the data even more
-{
-    char ch;
-    ofstream outfile;
-    outfile.open (outfileName);
-
-   // while(!feof(infile))
-    while(fscanf(infile,"%c",&ch)!=EOF)
-    {
-     //   fscanf(infile,"%c",&ch);
-        outfile<<Table[ch];
-    }
-
-    outfile.close();
-}*/
-
 
 int binaryToBase10(char str[])
 {
@@ -190,7 +167,7 @@ void createOutput(FILE* infile, char* outfileName)
 {
     unsigned char ch,ch2;           // the converted char
     ofstream outfile;
-    outfile.open ("sandbox1.txt");  // open an auxiliary file
+    outfile.open ("sandbox.txt");  // open an auxiliary file
 
     while(fscanf(infile,"%c",&ch)!=EOF)
     {
@@ -201,11 +178,12 @@ void createOutput(FILE* infile, char* outfileName)
 
 
     FILE* inFromSandbox;
-    inFromSandbox = fopen("sandbox1.txt","r");  // convert the sandbox to bits
+    inFromSandbox = fopen("sandbox.txt","r");  // convert the sandbox to bits
     outfile.open(outfileName);   // open the compressed file
     char str[8];
 
-    int counter=0;
+    int counter = 0;
+    int global = 0;
 
     while( fscanf(inFromSandbox,"%c",&ch)!=EOF )    //read each 8 bits
     {
@@ -215,11 +193,14 @@ void createOutput(FILE* infile, char* outfileName)
             ch2 = (unsigned char) binary;                 // convert the decimal to ascii
             outfile<< ch2;
             counter = 0;
+	    global++;
 
         }
 
         str[counter++] = ch;
     }
+
+    
     outfile.close();
     fclose(inFromSandbox);
 }
