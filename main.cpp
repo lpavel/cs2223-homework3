@@ -1,7 +1,7 @@
 #include<cstdio>
 #include<cstdlib>
 #include<cstring>
-#include"Huffman.h"
+#include"huffman.h"
 
 using namespace std;
 //works with no arguments
@@ -20,9 +20,9 @@ int main(){/*int argc, char* argv[])
              message1();
 */
 
-    encode("Homework6.txt","after.txt");
+    encode("index.html","bar.txt");
 
-    decode("after.txt","Homework6_final.txt");
+    decode("bar.txt","foo_final.txt");
 
 
 

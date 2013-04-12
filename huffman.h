@@ -1,6 +1,8 @@
 #ifndef HUFFMAN_H
 #define HUFFMAN_H
 
+#include<cstdio>
+
 typedef struct node
 {
         int ch;  // character

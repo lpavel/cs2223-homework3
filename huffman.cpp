@@ -8,7 +8,7 @@
 #include<cstdlib>
 #include<fstream>
 #include<iostream>
-#include "Huffman.h"
+#include "huffman.h"
 
 using namespace std;
 
